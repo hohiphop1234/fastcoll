@@ -1,0 +1,11 @@
+*.bin
+*.exe
+*.o
+*.obj
+.git
+.gitignore
+*.md
+demo.sh
+demo_windows.ps1
+HUONG_DAN_DEMO.md
+

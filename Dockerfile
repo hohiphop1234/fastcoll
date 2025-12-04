@@ -1,12 +1,12 @@
-FROM brimstone/debian:sid as builder
+FROM brimstone/debian:sid AS builder
 
-RUN package build-essential libboost-all-dev
+RUN apt-get update && apt-get install -y build-essential libboost-all-dev
 
 COPY . /fastcoll
 
 WORKDIR /fastcoll
 
-RUN g++ -O3 *.cpp -lboost_filesystem -lboost_program_options -lboost_system \
+RUN g++ -O3 -DBOOST_TIMER_ENABLE_DEPRECATED *.cpp -lboost_filesystem -lboost_program_options -lboost_system \
     -o fastcoll -static \
  && strip fastcoll
 
